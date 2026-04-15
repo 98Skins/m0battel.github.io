@@ -12,9 +12,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
-        :root {
-            -webkit-tap-highlight-color: transparent;
-        }
+        :root { -webkit-tap-highlight-color: transparent; }
 
         body {
             background-color: #F5F7FA;
@@ -26,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* Widoki */
         #birds-page { display: block; }
         #id-page { display: none; }
 
@@ -38,13 +35,8 @@
             background-size: cover;
         }
 
-        .nav-icon-btn {
-            transition: color 0.2s ease;
-            color: #9CA3AF;
-        }
-        .nav-icon-btn.active {
-            color: #003366 !important;
-        }
+        .nav-icon-btn { color: #9CA3AF; }
+        .nav-icon-btn.active { color: #003366 !important; }
 
         .bottom-sheet {
             transform: translateY(100%);
@@ -62,25 +54,13 @@
         }
         .overlay.active { display: block; }
 
-        #profile-img {
-            filter: grayscale(100%) contrast(1.1);
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            -webkit-touch-callout: none;
-        }
+        header { padding-top: env(safe-area-inset-top); }
+        img { -webkit-touch-callout: none; pointer-events: none; }
+        #secret-trigger { pointer-events: auto; }
 
-        header {
-            padding-top: env(safe-area-inset-top);
-        }
-
-        /* Zapobieganie kopiowaniu obrazków na iPhone */
-        img {
-            -webkit-touch-callout: none;
-            pointer-events: none;
-        }
-        #secret-trigger {
-            pointer-events: auto;
+        .info-row {
+            border-bottom: 1px solid #F3F4F6;
+            padding: 16px 0;
         }
     </style>
 </head>
@@ -93,123 +73,168 @@
             </h1>
         </header>
         <main class="p-4 space-y-6">
-            <img src="https://blizejlasu.pl/wp-content/uploads/2020/07/sikorka-bogatka-.jpg" class="w-full rounded-2xl shadow-md">
-            <img src="https://janadamski.eu/wp-content/uploads/2019/11/Ptaki_01.jpg" class="w-full rounded-2xl shadow-md">
-            <img src="https://animalistka.pl/wp-content/uploads/2018/02/%C5%BCo%C5%82na2-1.jpg" class="w-full rounded-2xl shadow-md">
-            <img src="https://karoka.pl/userdata/public/news/images/80.jpg" class="w-full rounded-2xl shadow-md">
-            <img src="https://www.kpodr.pl/wp-content/uploads/2017/05/Bocian_Bia%C5%81y_Cezary_Korkosz.jpg" class="w-full rounded-2xl shadow-md">
+            <img src="https://blizejlasu.pl/wp-content/uploads/2020/07/sikorka-bogatka-.jpg" class="w-full rounded-2xl">
+            <img src="https://janadamski.eu/wp-content/uploads/2019/11/Ptaki_01.jpg" class="w-full rounded-2xl">
+            <img src="https://animalistka.pl/wp-content/uploads/2018/02/%C5%BCo%C5%82na2-1.jpg" class="w-full rounded-2xl">
         </main>
     </div>
 
-    <div id="id-page">
+    <div id="id-page" class="bg-[#F5F7FA]">
         <header class="flex items-center justify-between px-4 pb-4 bg-white sticky top-0 z-30 border-b border-gray-50">
             <div onclick="location.reload()" class="flex items-center text-[#0055BB] font-semibold pt-4">
                 <i data-lucide="chevron-left" class="w-7 h-7"></i>
                 <span class="text-xl ml-1">Wróć</span>
             </div>
             <div class="flex items-center gap-2 pt-4">
-                <img src="https://info.mobywatel.gov.pl/assets/icons/emblem.svg" class="w-6 h-6">
                 <h1 class="text-xl font-bold text-gray-800">mDowód</h1>
             </div>
             <div class="text-gray-400 pt-4"><i data-lucide="help-circle" class="w-7 h-7"></i></div>
         </header>
 
-        <div class="text-center py-2">
+        <div class="text-center py-2 bg-white">
             <p class="text-[11px] text-gray-500 font-medium">Czas: <span id="current-time">--:--:-- --.--.----</span></p>
         </div>
 
-        <main class="px-4 mt-2 pb-32 space-y-4">
-            <section class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-gray-100">
-                <div class="id-card-bg p-6 relative min-h-[310px]">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Herb_Polski.svg/250px-Herb_Polski.svg.png" 
-                         class="absolute right-[-30px] bottom-10 w-72 h-72 opacity-10 grayscale">
-
-                    <div class="flex gap-5 relative z-10">
-                        <div class="flex flex-col">
-                            <div class="w-32 h-40 bg-gray-200 rounded-2xl border-4 border-white shadow-sm overflow-hidden mb-3">
-                                <img id="profile-img" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" style="pointer-events: auto;">
-                            </div>
-                            <div class="w-16 h-10 shadow-sm overflow-hidden rounded-md mb-3 border border-gray-100">
-                                <img src="https://usagif.com/wp-content/uploads/gifs/polish-flag-8.gif" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Herb_Polski.svg/250px-Herb_Polski.svg.png" class="w-8 opacity-50 grayscale">
-                                <div class="flex flex-col text-gray-500 font-bold text-[8px] uppercase leading-none">
-                                    <span>Rzeczpospolita</span><span>Polska</span>
+        <main class="pb-32">
+            <div class="px-4 mt-2">
+                <section class="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-gray-100">
+                    <div class="id-card-bg p-6 relative min-h-[310px]">
+                        <div class="flex gap-5 relative z-10">
+                            <div class="flex flex-col">
+                                <div class="w-32 h-40 bg-gray-200 rounded-2xl border-4 border-white overflow-hidden mb-3">
+                                    <img id="profile-img" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" style="pointer-events: auto;">
+                                </div>
+                                <div class="w-16 h-10 rounded-md mb-3 border border-gray-100 overflow-hidden">
+                                    <img src="https://usagif.com/wp-content/uploads/gifs/polish-flag-8.gif" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Herb_Polski.svg/250px-Herb_Polski.svg.png" class="w-8 opacity-50 grayscale">
+                                    <div class="flex flex-col text-gray-500 font-bold text-[8px] uppercase leading-none">
+                                        <span>Rzeczpospolita</span><span>Polska</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="flex-1 space-y-4 pt-1">
-                            <div><p id="display-fname" class="text-[15px] font-bold text-gray-900 uppercase leading-none">JAN</p><p class="text-[9px] text-gray-500 font-medium uppercase">Imię (imiona)</p></div>
-                            <div><p id="display-lname" class="text-[15px] font-bold text-gray-900 uppercase leading-none">KOWALSKI</p><p class="text-[9px] text-gray-500 font-medium uppercase">Nazwisko</p></div>
-                            <div><p class="text-[15px] font-bold text-gray-900 uppercase leading-none">POLSKIE</p><p class="text-[9px] text-gray-500 font-medium uppercase">Obywatelstwo</p></div>
-                            <div><p id="display-dob" class="text-[15px] font-bold text-gray-900 uppercase leading-none">12.08.1986</p><p class="text-[9px] text-gray-500 font-medium uppercase">Data urodzenia</p></div>
-                            <div><p id="display-pesel" class="text-[15px] font-bold text-gray-900 uppercase leading-none tracking-widest">86081227756</p><p class="text-[9px] text-gray-500 font-medium uppercase">Numer PESEL</p></div>
+                            <div class="flex-1 space-y-4 pt-1">
+                                <div><p id="display-fname" class="text-[15px] font-bold text-gray-900 uppercase">JAN</p><p class="text-[9px] text-gray-500 uppercase">Imię (imiona)</p></div>
+                                <div><p id="display-lname" class="text-[15px] font-bold text-gray-900 uppercase">KOWALSKI</p><p class="text-[9px] text-gray-500 uppercase">Nazwisko</p></div>
+                                <div><p class="text-[15px] font-bold text-gray-900 uppercase">POLSKIE</p><p class="text-[9px] text-gray-500 uppercase">Obywatelstwo</p></div>
+                                <div><p id="display-dob" class="text-[15px] font-bold text-gray-900 uppercase">12.08.1986</p><p class="text-[9px] text-gray-500 uppercase">Data urodzenia</p></div>
+                                <div><p id="display-pesel" class="text-[15px] font-bold text-gray-900 uppercase tracking-widest">86081227756</p><p class="text-[9px] text-gray-500 uppercase">Numer PESEL</p></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="bg-white px-6 py-5 flex items-center gap-3 border-t border-gray-50">
-                    <div class="w-8 h-8 rounded-full border-2 border-green-600 flex items-center justify-center">
-                        <i data-lucide="check" class="w-5 h-5 text-green-600 stroke-[3px]"></i>
+                    <div class="bg-white px-6 py-4 flex items-center gap-3 border-t border-gray-50">
+                        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center">
+                            <i data-lucide="check" class="w-4 h-4 text-green-600 stroke-[3px]"></i>
+                        </div>
+                        <span class="text-green-700 font-bold text-lg">Dokument ważny</span>
                     </div>
-                    <span class="text-green-700 font-bold text-lg">Dokument ważny</span>
-                </div>
-            </section>
+                </section>
+            </div>
 
-            <section class="bg-white rounded-[2rem] p-6 space-y-5 shadow-sm border border-gray-100">
-                <h2 class="text-xl font-bold text-gray-800">Informacje o dokumencie</h2>
-                <div class="flex justify-between items-center border-b border-gray-50 pb-3">
-                    <span class="text-gray-500 font-medium text-sm">Numer dowodu</span>
-                    <span class="font-bold text-gray-900 uppercase">ABC 123456</span>
+            <div class="px-4 mt-6 grid grid-cols-4 gap-2">
+                <div class="flex flex-col items-center text-center gap-2">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100">
+                        <i data-lucide="scan" class="text-blue-600 w-6 h-6"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-gray-700 leading-tight">Potwierdź swoje dane</span>
                 </div>
-                <div class="flex justify-between items-center border-b border-gray-50 pb-3">
-                    <span class="text-gray-500 font-medium text-sm">Data wydania</span>
-                    <span class="font-bold text-gray-900">01.01.2024</span>
+                <div class="flex flex-col items-center text-center gap-2">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100">
+                        <i data-lucide="contact-2" class="text-blue-600 w-6 h-6"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-gray-700 leading-tight">Dane dowodu osobistego</span>
                 </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-gray-500 font-medium text-sm">Termin ważności</span>
-                    <span class="font-bold text-gray-900">01.01.2029</span>
+                <div class="flex flex-col items-center text-center gap-2">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100">
+                        <i data-lucide="shield-check" class="text-blue-600 w-6 h-6"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-gray-700 leading-tight">Zastrzeż PESEL</span>
                 </div>
-            </section>
+                <div class="flex flex-col items-center text-center gap-2">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm border border-gray-100">
+                        <i data-lucide="more-horizontal" class="text-blue-600 w-6 h-6"></i>
+                    </div>
+                    <span class="text-[10px] font-medium text-gray-700 leading-tight">Pozostałe skróty</span>
+                </div>
+            </div>
+
+            <div class="mx-4 mt-6 bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
+                <div class="info-row flex justify-between items-center">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-semibold text-gray-900">Seria i numer</span>
+                        <span class="text-gray-500 text-sm" id="display-serial">AKAP 32410</span>
+                    </div>
+                    <button class="bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold">Kopiuj</button>
+                </div>
+                <div class="info-row flex flex-col">
+                    <span class="text-sm font-semibold text-gray-900">Termin ważności</span>
+                    <span class="text-gray-500 text-sm" id="display-expiry">01.01.2029</span>
+                </div>
+                <div class="info-row flex flex-col">
+                    <span class="text-sm font-semibold text-gray-900">Data wydania</span>
+                    <span class="text-gray-500 text-sm" id="display-issued">01.01.2024</span>
+                </div>
+                <div class="info-row flex flex-col">
+                    <span class="text-sm font-semibold text-gray-900">Imię ojca</span>
+                    <span class="text-gray-500 text-sm" id="display-father">MARIAN</span>
+                </div>
+                <div class="info-row flex flex-col border-none">
+                    <span class="text-sm font-semibold text-gray-900">Imię matki</span>
+                    <span class="text-gray-500 text-sm" id="display-mother">BEATA</span>
+                </div>
+            </div>
+
+            <div class="mx-4 mt-4 bg-white rounded-2xl p-4 flex justify-between items-center shadow-sm border border-gray-100">
+                <span class="font-bold text-gray-800">Twoje dodatkowe dane</span>
+                <i data-lucide="chevron-down" class="text-gray-400"></i>
+            </div>
+
+            <div class="mx-4 mt-4 bg-white rounded-2xl p-4 flex justify-between items-center shadow-sm border border-gray-100">
+                <div class="flex flex-col">
+                    <span class="text-xs text-gray-500">Ostatnia aktualizacja</span>
+                    <span class="font-bold text-gray-800">24.12.2024</span>
+                </div>
+                <button class="bg-blue-50 text-blue-700 px-6 py-2 rounded-full text-sm font-bold">Aktualizuj</button>
+            </div>
         </main>
 
-        <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex justify-around items-center pt-2 pb-6 px-1 max-w-md mx-auto z-30">
-            <div class="flex flex-col items-center nav-icon-btn cursor-pointer"><i data-lucide="home" class="w-6 h-6"></i><span class="text-[10px] mt-1">Pulpit</span></div>
-            <div class="flex flex-col items-center nav-icon-btn active cursor-pointer"><i data-lucide="user-square-2" class="w-6 h-6"></i><span class="text-[10px] mt-1">Dokumenty</span></div>
-            <div class="flex flex-col items-center nav-icon-btn cursor-pointer"><i data-lucide="folder" class="w-6 h-6"></i><span class="text-[10px] mt-1">Usługi</span></div>
-            <div class="flex flex-col items-center nav-icon-btn cursor-pointer"><i data-lucide="qr-code" class="w-6 h-6"></i><span class="text-[10px] mt-1">Kod QR</span></div>
+        <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex justify-around items-center pt-2 pb-8 px-1 max-w-md mx-auto z-40">
+            <div class="flex flex-col items-center nav-icon-btn"><i data-lucide="home" class="w-6 h-6"></i><span class="text-[10px] mt-1">Pulpit</span></div>
+            <div class="flex flex-col items-center nav-icon-btn active"><i data-lucide="user-square-2" class="w-6 h-6"></i><span class="text-[10px] mt-1">Dokumenty</span></div>
+            <div class="flex flex-col items-center nav-icon-btn"><i data-lucide="folder" class="w-6 h-6"></i><span class="text-[10px] mt-1">Usługi</span></div>
+            <div class="flex flex-col items-center nav-icon-btn"><i data-lucide="qr-code" class="w-6 h-6"></i><span class="text-[10px] mt-1">Kod QR</span></div>
             <div onclick="toggleMoreMenu()" class="flex flex-col items-center nav-icon-btn cursor-pointer"><i data-lucide="more-horizontal" class="w-6 h-6"></i><span class="text-[10px] mt-1">Więcej</span></div>
         </nav>
     </div>
 
-    <div id="overlay" class="overlay fixed inset-0 z-40" onclick="closeAllMenus()"></div>
-    <div id="more-menu" class="bottom-sheet fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white rounded-t-[2.5rem] z-50 p-6 shadow-2xl overflow-y-auto">
+    <div id="overlay" class="overlay fixed inset-0 z-50" onclick="closeAllMenus()"></div>
+    <div id="more-menu" class="bottom-sheet fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white rounded-t-[2.5rem] z-[60] p-6 shadow-2xl">
         <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-8"></div>
-        <button onclick="openSettings()" class="w-full flex items-center justify-between p-5 bg-gray-50 rounded-2xl active:bg-gray-100 mb-3">
-            <div class="flex items-center gap-4 text-gray-800"><i data-lucide="settings" class="w-6 h-6 text-blue-600"></i><span class="font-bold text-lg">Ustawienia</span></div>
-            <i data-lucide="chevron-right" class="w-5 h-5 text-gray-300"></i>
+        <button onclick="openSettings()" class="w-full flex items-center justify-between p-5 bg-gray-50 rounded-2xl mb-3">
+            <div class="flex items-center gap-4 text-gray-800"><i data-lucide="settings" class="text-blue-600"></i><span class="font-bold">Ustawienia</span></div>
+            <i data-lucide="chevron-right" class="text-gray-300"></i>
         </button>
-        <button onclick="clearData()" class="w-full flex items-center gap-4 p-5 bg-red-50 rounded-2xl text-red-600 active:bg-red-100">
-            <i data-lucide="trash-2" class="w-6 h-6"></i><span class="font-bold text-lg">Resetuj dane</span>
+        <button onclick="clearData()" class="w-full flex items-center gap-4 p-5 bg-red-50 rounded-2xl text-red-600">
+            <i data-lucide="trash-2"></i><span class="font-bold">Resetuj</span>
         </button>
-        <button onclick="closeAllMenus()" class="w-full mt-6 py-4 text-gray-500 font-bold">Anuluj</button>
     </div>
 
-    <div id="settings-menu" class="bottom-sheet fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white rounded-t-[2.5rem] z-50 p-6 shadow-2xl overflow-y-auto">
+    <div id="settings-menu" class="bottom-sheet fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white rounded-t-[2.5rem] z-[60] p-6 shadow-2xl overflow-y-auto">
         <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6"></div>
-        <div class="space-y-4">
+        <div class="space-y-3">
             <div class="flex gap-2">
-                <button onclick="triggerInput('camera')" class="flex-1 p-4 bg-blue-50 rounded-xl text-blue-700 font-bold text-xs">APARAT</button>
-                <button onclick="triggerInput('gallery')" class="flex-1 p-4 bg-blue-50 rounded-xl text-blue-700 font-bold text-xs">GALERIA</button>
+                <button onclick="triggerInput('camera')" class="flex-1 p-3 bg-blue-50 rounded-xl text-blue-700 font-bold text-xs">APARAT</button>
+                <button onclick="triggerInput('gallery')" class="flex-1 p-3 bg-blue-50 rounded-xl text-blue-700 font-bold text-xs">GALERIA</button>
             </div>
-            <input type="text" id="input-fname" placeholder="IMIĘ" class="w-full p-4 bg-gray-100 rounded-xl border-none outline-none">
-            <input type="text" id="input-lname" placeholder="NAZWISKO" class="w-full p-4 bg-gray-100 rounded-xl border-none outline-none">
-            <input type="text" id="input-dob" placeholder="DATA URODZENIA" class="w-full p-4 bg-gray-100 rounded-xl border-none outline-none">
-            <input type="text" id="input-pesel" placeholder="PESEL" class="w-full p-4 bg-gray-100 rounded-xl border-none outline-none tracking-widest">
-            <button onclick="saveChanges()" class="w-full py-4 bg-[#0055BB] text-white rounded-xl font-bold shadow-lg active:scale-95 transition-transform">Zapisz i zamknij</button>
+            <input type="text" id="input-fname" placeholder="IMIĘ" class="w-full p-3 bg-gray-100 rounded-xl outline-none">
+            <input type="text" id="input-lname" placeholder="NAZWISKO" class="w-full p-3 bg-gray-100 rounded-xl outline-none">
+            <input type="text" id="input-pesel" placeholder="PESEL" class="w-full p-3 bg-gray-100 rounded-xl outline-none">
+            <input type="text" id="input-serial" placeholder="SERIA I NUMER" class="w-full p-3 bg-gray-100 rounded-xl outline-none">
+            <input type="text" id="input-father" placeholder="IMIĘ OJCA" class="w-full p-3 bg-gray-100 rounded-xl outline-none">
+            <input type="text" id="input-mother" placeholder="IMIĘ MATKI" class="w-full p-3 bg-gray-100 rounded-xl outline-none">
+            <button onclick="saveChanges()" class="w-full py-4 bg-[#0055BB] text-white rounded-xl font-bold">Zapisz</button>
         </div>
-        <button onclick="closeAllMenus()" class="w-full mt-4 py-2 text-gray-400 font-bold">Wróć</button>
     </div>
 
     <input type="file" id="cameraInput" accept="image/*" capture="user" class="hidden" onchange="processFile(this)">
@@ -217,21 +242,13 @@
 
     <script>
         lucide.createIcons();
-
-        // LOGIKA TAJNEGO KLIKANIA - ZOPTYMALIZOWANA POD DOTYK
         let clickCount = 0;
         let lastClickTime = 0;
-        const trigger = document.getElementById('secret-trigger');
 
-        const handleSecretAction = (e) => {
-            const currentTime = Date.now();
-            if (currentTime - lastClickTime < 400) { 
-                clickCount++;
-            } else {
-                clickCount = 1;
-            }
-            lastClickTime = currentTime;
-
+        const handleSecretAction = () => {
+            const now = Date.now();
+            if (now - lastClickTime < 400) clickCount++; else clickCount = 1;
+            lastClickTime = now;
             if (clickCount === 5) {
                 document.getElementById('birds-page').style.display = 'none';
                 document.getElementById('id-page').style.display = 'block';
@@ -240,67 +257,54 @@
             }
         };
 
-        // Obsługa zarówno dotyku (szybciej) jak i myszki
-        trigger.addEventListener('touchstart', (e) => {
-            e.preventDefault(); 
-            handleSecretAction();
-        }, { passive: false });
+        document.getElementById('secret-trigger').addEventListener('touchstart', (e) => { e.preventDefault(); handleSecretAction(); });
+        document.getElementById('secret-trigger').addEventListener('mousedown', () => { if(!('ontouchstart' in window)) handleSecretAction(); });
 
-        trigger.addEventListener('mousedown', (e) => {
-            if (!('ontouchstart' in window)) handleSecretAction();
-        });
-
-        // POZOSTAŁE FUNKCJE
-        window.onload = function() {
-            if(localStorage.getItem('mO_img')) document.getElementById('profile-img').src = localStorage.getItem('mO_img');
-            const fields = ['fname', 'lname', 'dob', 'pesel'];
-            fields.forEach(f => {
-                const val = localStorage.getItem('mO_' + f);
-                if(val) {
-                    document.getElementById('display-' + f).innerText = val;
-                    document.getElementById('input-' + f).value = val;
-                }
-            });
-            updateTime();
-        };
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('pl-PL');
+            const dateStr = now.toLocaleDateString('pl-PL');
+            document.getElementById('current-time').textContent = `${timeStr} ${dateStr}`;
+        }
+        setInterval(updateTime, 1000);
 
         function toggleMoreMenu() { document.getElementById('more-menu').classList.add('active'); document.getElementById('overlay').classList.add('active'); }
         function openSettings() { document.getElementById('more-menu').classList.remove('active'); document.getElementById('settings-menu').classList.add('active'); }
         function closeAllMenus() { document.querySelectorAll('.bottom-sheet').forEach(el => el.classList.remove('active')); document.getElementById('overlay').classList.remove('active'); }
-        function triggerInput(mode) { (mode === 'camera' ? document.getElementById('cameraInput') : document.getElementById('galleryInput')).click(); }
+        function triggerInput(m) { (m === 'camera' ? document.getElementById('cameraInput') : document.getElementById('galleryInput')).click(); }
 
-        function processFile(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = e => {
-                    document.getElementById('profile-img').src = e.target.result;
-                    localStorage.setItem('mO_img', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
+        function processFile(i) {
+            if (i.files && i.files[0]) {
+                const r = new FileReader();
+                r.onload = e => { document.getElementById('profile-img').src = e.target.result; localStorage.setItem('mO_img', e.target.result); };
+                r.readAsDataURL(i.files[0]);
             }
         }
 
         function saveChanges() {
-            ['fname', 'lname', 'dob', 'pesel'].forEach(f => {
-                const val = document.getElementById('input-' + f).value;
-                if(val) {
-                    document.getElementById('display-' + f).innerText = val.toUpperCase();
-                    localStorage.setItem('mO_' + f, val.toUpperCase());
+            const fds = ['fname', 'lname', 'pesel', 'serial', 'father', 'mother'];
+            fds.forEach(f => {
+                const v = document.getElementById('input-' + f).value;
+                if(v) {
+                    document.getElementById('display-' + f).innerText = v.toUpperCase();
+                    localStorage.setItem('mO_' + f, v.toUpperCase());
                 }
             });
             closeAllMenus();
         }
 
-        function clearData() { if(confirm("Resetuj dane?")) { localStorage.clear(); location.reload(); } }
-
-        function updateTime() {
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            const dateStr = now.toLocaleDateString('pl-PL');
-            const el = document.getElementById('current-time');
-            if(el) el.textContent = `${timeStr} ${dateStr}`;
-        }
-        setInterval(updateTime, 1000);
+        window.onload = () => {
+            if(localStorage.getItem('mO_img')) document.getElementById('profile-img').src = localStorage.getItem('mO_img');
+            ['fname', 'lname', 'pesel', 'serial', 'father', 'mother'].forEach(f => {
+                const v = localStorage.getItem('mO_' + f);
+                if(v) {
+                    if(document.getElementById('display-' + f)) document.getElementById('display-' + f).innerText = v;
+                    document.getElementById('input-' + f).value = v;
+                }
+            });
+            updateTime();
+        };
+        function clearData() { if(confirm("Reset?")) { localStorage.clear(); location.reload(); } }
     </script>
 </body>
 </html>
